@@ -35,4 +35,11 @@ limitations under the License. -->
 
     <!-- Button label for Reset button -->
     <string name="reset_button">Reset</string>
+
+    <string-array name="color_array">
+        <item>Black</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
 </resources>

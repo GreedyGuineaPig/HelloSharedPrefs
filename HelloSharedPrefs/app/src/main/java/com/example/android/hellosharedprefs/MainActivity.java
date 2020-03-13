@@ -15,6 +15,7 @@
  */
 package com.example.android.hellosharedprefs;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     // Name of shared preferences file
     private String sharedPrefFile =
             "com.example.android.hellosharedprefs";
+
+
 
 
     @Override
@@ -98,38 +101,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Handles the onClick for the Reset button.  Resets the global count and
-     * background variables to the defaults and resets the views to those
-     * default values.
-     *
-     * @param view The view (Button) that was clicked.
-     */
-    public void reset(View view) {
-        // Reset count
-        mCount = 0;
-        mShowCountTextView.setText(String.format("%s", mCount));
-
-        // Reset color
-        mColor = ContextCompat.getColor(this,
-                R.color.default_background);
-        mShowCountTextView.setBackgroundColor(mColor);
-
-        // Clear preferences
-        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-        preferencesEditor.clear();
-        preferencesEditor.apply();
-    }
-
-    /**
      * Callback for activity pause.  Shared preferences are saved here.
      */
-    @Override
-    protected void onPause() {
-        super.onPause();
 
-        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-        preferencesEditor.putInt(COUNT_KEY, mCount);
-        preferencesEditor.putInt(COLOR_KEY, mColor);
-        preferencesEditor.apply();
+
+    public void onClickSetting(View view) {
+        Intent intent = new Intent(this, SettingActivity.class);
+        intent.putExtra("mCount", mCount);
+        intent.putExtra("mColor", mColor);
+        startActivity(intent);
     }
 }
